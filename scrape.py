@@ -61,7 +61,9 @@ def fetch_data():
         try:
             r2 = session.get(url, headers=headers, timeout=15).json()
         except:
-            r2 = api_get(url, headers, 15, 0, 15).json()
+            r2 = api_get(url, headers, 15, 0, 15)
+            print(r2.text)
+            r2 = r2.json()
         if r2["payload"]["nbrOfStores"]:
             if int(r2["payload"]["nbrOfStores"]) > 0:
                 for store in r2["payload"]["storesData"]["stores"]:
